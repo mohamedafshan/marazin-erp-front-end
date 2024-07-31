@@ -1,10 +1,19 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
-import SideBar from './components/SideBar.js';
+import SideBar from './components/SideBar';
 
-import Dummy2 from './pages/Dummy2';
-import HomePage from './pages/Home';
+// Import more pages
+import AdminDashboard from './pages/AdminDashboard';
+import TeacherDashboard from './pages/TeacherDashboard';
+import StudentDashboard from './pages/StudentDashboard';
+import Users from './pages/Users';
+import Roles from './pages/Roles';
+import SalesCommission from './pages/SalesCommission';
+import ListProducts from './pages/ListProducts';
+import AddProduct from './pages/AddProduct';
+import ListPurchases from './pages/ListPurchases';
+import AddPurchase from './pages/AddPurchase';
 
 function App() {
   return (
@@ -15,8 +24,16 @@ function App() {
           <SideBar />
           <div className="main-content">
             <Routes>
-              <Route path="/home" element={<HomePage />} />
-              <Route path="/dummy2" element={<Dummy2 />} />
+              <Route path="/admin-dashboard" element={<AdminDashboard />} />
+              <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
+              <Route path="/student-dashboard" element={<StudentDashboard />} />
+              <Route path="/users" element={<Users />} />
+              <Route path="/roles" element={<Roles />} />
+              <Route path="/sales-commission" element={<SalesCommission />} />
+              <Route path="/list-products" element={<ListProducts />} />
+              <Route path="/add-product" element={<AddProduct />} />
+              <Route path="/list-purchases" element={<ListPurchases />} />
+              <Route path="/add-purchase" element={<AddPurchase />} />
               {/* Add more routes here */}
             </Routes>
           </div>
