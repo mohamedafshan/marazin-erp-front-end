@@ -35,21 +35,29 @@ function WarrantyTable() {
         );
     }
 
-    const deleteWarranty = (e, id) => {
+    const deletewarranty = (e, id) => {
         e.preventDefault();
         const thisClicked = e.currentTarget;
         thisClicked.innerText = 'Deleting...';
-
-        axios.delete(`http://127.0.0.1:8000/api/warranty-delete/${id}`).then(res => {
-            alert('Successfully deleted');
-            setWarranty(prevWarranty => prevWarranty.filter(item => item.id !== id));
-        }).catch(error => {
-            if (error.response) {
-                if (error.response.status === 404) {
-                    alert("Error: " + error.response.data.message);
+    
+        axios
+            .delete(`http://127.0.0.1:8000/api/warranty-delete/${id}`)
+            .then((res) => {
+                alert('Successfully deleted');
+                thisClicked.closest("tr").remove();
+            })
+            .catch((error) => {
+                if (error.response) {
+                    if (error.response.status === 404) {
+                        alert("Error: " + error.response.data.message);
+                    } else {
+                        alert("An error occurred. Please try again.");
+                    }
+                } else {
+                    console.error("Error:", error);
+                    alert("An unexpected error occurred.");
                 }
-            }
-        })
+            });
     };
 
     const warrantyDetails = warranty.map((item, index) => {
@@ -61,7 +69,13 @@ function WarrantyTable() {
                 <td>{item.duration}</td>
                 <td>{item.duration_type}</td>
                 <td>
-                    {/* Actions can be added here */}<button type="button" onClick={(e) => deleteWarranty(e, item.id)} className="btn btn-danger">Delete</button>
+                <button
+                    type="button"
+                    onClick={(e) => deletewarranty(e, item.id)}
+                    className="btn btn-danger"
+                >
+        Delete
+    </button>
                 </td>
             </tr>
         );
@@ -117,7 +131,7 @@ function Warranty() {
                                             </div>
                                         </div>
                                     </div>
-                                    <WarrantyTable /> {/* Separate component for table */}
+                                    <WarrantyTable /> 
                                 </div>
                             </div>
                         </div>
@@ -137,7 +151,7 @@ function Warranty() {
                         <div className="modal-content">
                             <div className="modal-body">
                                 <div className="text-center mt-2 mb-4">
-                                    <h5 id="modalTitle"></h5>
+                                    <h5 id="modalTitle">Add Warranties</h5>
                                 </div>
 
                                 <input type="hidden" name="edit_id" id="edit_id" />
