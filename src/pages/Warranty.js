@@ -35,6 +35,23 @@ function WarrantyTable() {
         );
     }
 
+    const deleteWarranty = (e, id) => {
+        e.preventDefault();
+        const thisClicked = e.currentTarget;
+        thisClicked.innerText = 'Deleting...';
+
+        axios.delete(`http://127.0.0.1:8000/api/warranty-delete/${id}`).then(res => {
+            alert('Successfully deleted');
+            setWarranty(prevWarranty => prevWarranty.filter(item => item.id !== id));
+        }).catch(error => {
+            if (error.response) {
+                if (error.response.status === 404) {
+                    alert("Error: " + error.response.data.message);
+                }
+            }
+        })
+    };
+
     const warrantyDetails = warranty.map((item, index) => {
         return (
             <tr key={index + 1}>
@@ -44,7 +61,7 @@ function WarrantyTable() {
                 <td>{item.duration}</td>
                 <td>{item.duration_type}</td>
                 <td>
-                    {/* Actions can be added here */}
+                    {/* Actions can be added here */}<button type="button" onClick={(e) => deleteWarranty(e, item.id)} className="btn btn-danger">Delete</button>
                 </td>
             </tr>
         );
@@ -100,7 +117,6 @@ function Warranty() {
                                             </div>
                                         </div>
                                     </div>
-
                                     <WarrantyTable /> {/* Separate component for table */}
                                 </div>
                             </div>
