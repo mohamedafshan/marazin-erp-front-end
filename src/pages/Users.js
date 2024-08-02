@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Users() {
   return (
@@ -26,10 +27,9 @@ function Users() {
                               <div className="page-header">
                                   <div className="row align-items-center">
                                       <div className="col-auto text-end float-end ms-auto download-grp">
-                                        
-                                          <a href="#" className="btn btn-outline-info">
-                                              <i className="fas fa-plus px-2"></i>Add
-                                      </a>
+                                          <Link to="/add-user" className="btn btn-outline-info">
+                                                <i className="fas fa-plus px-2"></i>Add
+                                          </Link>
                                       </div>
                                   </div>
                               </div>
@@ -56,68 +56,8 @@ function Users() {
               </div>
 
           </div>
-        </div>
-        
-    
-        <div className="row">
-            <div id="addModal" className="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-                <div className="modal-dialog  modal-dialog-centered">
-                    <div className="modal-content">
-                        <div className="modal-body">
-                            <div className="text-center mt-2 mb-4">
-                                <h5>Add Warranty</h5>
-                            </div>
-                            <form className="px-3" action="#">
-                                <div className="mb-3">
-                                    <div className="form-group local-forms">
-                                        <label>Name <span className="login-danger">*</span></label>
-                                        <input className="form-control" type="text" placeholder="Enter Name"/>
-                                    </div>
-                                </div>
-
-                                <div className="mb-3">
-                                    <div class="form-group local-forms">
-                                        <label>Description <span className="login-danger">*</span></label>
-                                        <textarea className="form-control" type="text" placeholder="Enter Description"></textarea>
-                                    </div>
-                                </div>
-
-                                <div className="mb-3">
-                                    <div className="row">
-                                        <div className="col">
-                                            <div className="form-group local-forms">
-                                                <label>Duration <span className="login-danger">*</span></label>
-                                                <input className="form-control" type="number" placeholder="Enter Duration"/>
-                                            </div>
-                                        </div>
-                                        <div className="col">
-                                            <div className="form-group local-forms days">
-                                                <label>Blood Group <span className="login-danger">*</span></label>
-                                                <select className="form-control form-select">
-                                                    <option selected disabled>Please Select </option>
-                                                    <option>Days</option>
-                                                    <option>Months</option>
-                                                    <option>Years</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <div className="modal-footer">
-                                    <button type="button" className="btn btn-primary">Save changes</button>
-                                    <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-      </div>
+        </div> 
+     </div>
     </>
   );
 }

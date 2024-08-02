@@ -27,6 +27,7 @@ export const SideBarData = [
     subNav: [
       { title: "List Products", link: "/list-products" },
       { title: "Add Product", link: "/add-product" },
+      { title: "warranty", link: "/list-warranties" },
       // Add more product-related routes here
     ]
   },

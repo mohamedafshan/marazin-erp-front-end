@@ -14,6 +14,8 @@ import ListProducts from './pages/ListProducts';
 import AddProduct from './pages/AddProduct';
 import ListPurchases from './pages/ListPurchases';
 import AddPurchase from './pages/AddPurchase';
+import AddUser from './pages/AddUser';
+import Warranty from './pages/Warranty';
 
 function App() {
   return (
@@ -22,7 +24,7 @@ function App() {
         <div className="main-wrapper">
           <Header />
           <SideBar />
-          <div className="main-content">
+          <div className="content container-fluid">
             <Routes>
               <Route path="/admin-dashboard" element={<AdminDashboard />} />
               <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
@@ -34,6 +36,8 @@ function App() {
               <Route path="/add-product" element={<AddProduct />} />
               <Route path="/list-purchases" element={<ListPurchases />} />
               <Route path="/add-purchase" element={<AddPurchase />} />
+              <Route path="/add-user" element={<AddUser />} />
+              <Route path="/list-warranties" element={<Warranty/>} /> 
               {/* Add more routes here */}
             </Routes>
           </div>
