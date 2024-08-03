@@ -63,8 +63,8 @@ function WarrantyTable() {
 
     const warrantyDetails = warranty.map((item, index) => {
         return (
-            <tr key={index + 1}>
-                <td>{item.id}</td>
+            <tr key={index}>
+                <td>{index +1}</td>
                 <td>{item.name}</td>
                 <td>{item.description}</td>
                 <td>{item.duration}</td>
@@ -75,8 +75,14 @@ function WarrantyTable() {
                     onClick={(e) => deletewarranty(e, item.id)}
                     className="btn btn-danger"
                 >
-        Delete
-    </button>
+                    Delete
+                </button>
+                <Link to={'/edit-warranty/${id}'}
+                    type="button"
+                    className="btn btn-primary"
+                >
+                    Edit
+                </Link>
                 </td>
             </tr>
         );
@@ -130,6 +136,9 @@ function Warranty() {
                                             {/* data-bs-toggle="modal" data-bs-target="#addAndEditWarrantyModal" */}
                                                 <i className="fas fa-plus px-2"></i>Add
                                              </Link>
+                                             <button className="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#addAndEditWarrantyModal"> 
+                                                <i className="fas fa-plus px-2"></i>Add Data using Modal
+                                             </button>
                                             </div>
                                         </div>
                                     </div>

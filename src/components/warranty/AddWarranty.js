@@ -38,7 +38,6 @@ export default function AddWarranty() {
             .catch(error => {
                 if (error.response) {
                     if (error.response.status === 422) {
-                        alert('Error');
                         setInputErrorList(error.response.data.errors);
                         setLoading(false);
                     }
@@ -47,11 +46,7 @@ export default function AddWarranty() {
     };
 
     if (loading) {
-        return (
-            <div>
-                <Loading />
-            </div>
-        );
+        return <Loading />;
     }
 
     return (
@@ -78,108 +73,100 @@ export default function AddWarranty() {
                             <div className="card-body">
                                 <div className="page-header">
                                     <div className="row align-items-center">
-                                        <div className="row">
-                                            <form onSubmit={saveWarranty}>
+                                        <form onSubmit={saveWarranty}>
+                                            <div className="col-md-12">
+                                                <div className="text-center mt-2 mb-4">
+                                                    <h5 id="modalTitle">Add Warranties</h5>
+                                                </div>
+                                            </div>
+                                            <div className="row">
+                                                <div className="col-md-4">
+                                                    <div className="mb-3">
+                                                        <div className="form-group local-forms">
+                                                            <label>
+                                                                Name <span className="login-danger">*</span>
+                                                            </label>
+                                                            <input
+                                                                className="form-control"
+                                                                name="name"
+                                                                type="text"
+                                                                placeholder="Enter Name"
+                                                                value={warranty.name}
+                                                                onChange={handleInput}
+                                                            />
+                                                            {inputErrorList.name && <span className="text-danger">{inputErrorList.name[0]}</span>}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div className="col-md-4">
+                                                    <div className="mb-3">
+                                                        <div className="form-group local-forms">
+                                                            <label>
+                                                                Duration <span className="login-danger">*</span>
+                                                            </label>
+                                                            <input
+                                                                className="form-control"
+                                                                name="duration"
+                                                                type="number"
+                                                                placeholder="Enter Duration"
+                                                                value={warranty.duration}
+                                                                onChange={handleInput}
+                                                            />
+                                                            {inputErrorList.duration && <span className="text-danger">{inputErrorList.duration[0]}</span>}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div className="col-md-4">
+                                                    <div className="mb-3">
+                                                        <div className="form-group local-forms">
+                                                            <label>
+                                                                Period <span className="login-danger">*</span>
+                                                            </label>
+                                                            <select
+                                                                className="form-control"
+                                                                name="duration_type"
+                                                                value={warranty.duration_type}
+                                                                onChange={handleInput}
+                                                            >
+                                                                <option value="" disabled>Please Select</option>
+                                                                <option value="days">days</option>
+                                                                <option value="months">months</option>
+                                                                <option value="years">years</option>
+                                                            </select>
+                                                            {inputErrorList.duration_type && <span className="text-danger">{inputErrorList.duration_type[0]}</span>}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="row">
                                                 <div className="col-md-12">
-                                                    <div className="text-center mt-2 mb-4">
-                                                        <h5 id="modalTitle">Add Warranties</h5>
-                                                    </div>
-                                                </div>
-                                                <div className="row">
-                                                    <div className="col-md-4">
-                                                        <div className="mb-3">
-                                                            <div className="form-group local-forms">
-                                                                <label>
-                                                                    Name <span className="login-danger">*</span>
-                                                                </label>
-                                                                <input
-                                                                    className="form-control"
-                                                                    id="edit_name"
-                                                                    name="name"
-                                                                    type="text"
-                                                                    placeholder="Enter Name"
-                                                                    value={warranty.name}
-                                                                    onChange={handleInput}
-                                                                />
-                                                                <span className="text-danger" id="name_error"></span>
-                                                            </div>
+                                                    <div className="mb-3">
+                                                        <div className="form-group local-forms">
+                                                            <label>Description</label>
+                                                            <textarea
+                                                                className="form-control"
+                                                                name="description"
+                                                                placeholder="Enter Description"
+                                                                value={warranty.description}
+                                                                onChange={handleInput}
+                                                            ></textarea>
+                                                            {inputErrorList.description && <span className="text-danger">{inputErrorList.description[0]}</span>}
                                                         </div>
                                                     </div>
+                                                </div>
+                                            </div>
 
-                                                    <div className="col-md-4">
-                                                        <div className="mb-3">
-                                                            <div className="form-group local-forms">
-                                                                <label>
-                                                                    Duration <span className="login-danger">*</span>
-                                                                </label>
-                                                                <input
-                                                                    className="form-control"
-                                                                    id="edit_duration"
-                                                                    name="duration"
-                                                                    type="number"
-                                                                    placeholder="Enter Duration"
-                                                                    value={warranty.duration}
-                                                                    onChange={handleInput}
-                                                                />
-                                                                <span className="text-danger" id="duration_error"></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div className="col-md-4">
-                                                        <div className="mb-3">
-                                                            <div className="form-group local-forms">
-                                                                <label>
-                                                                    Period <span className="login-danger">*</span>
-                                                                </label>
-                                                                <select
-                                                                    className="form-control"
-                                                                    id="edit_duration_type"
-                                                                    name="duration_type"
-                                                                    value={warranty.duration_type}
-                                                                    onChange={handleInput}
-                                                                >
-                                                                    <option selected disabled>
-                                                                        Please Select
-                                                                    </option>
-                                                                    <option>days</option>
-                                                                    <option>months</option>
-                                                                    <option>years</option>
-                                                                </select>
-                                                                <span className="text-danger" id="duration_type_error"></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="row">
-                                                    <div className="col-md-12">
-                                                        <div className="mb-3">
-                                                            <div className="form-group local-forms">
-                                                                <label>Description</label>
-                                                                <textarea
-                                                                    className="form-control"
-                                                                    id="edit_description"
-                                                                    name="description"
-                                                                    placeholder="Enter Description"
-                                                                    value={warranty.description}
-                                                                    onChange={handleInput}
-                                                                ></textarea>
-                                                                <span className="text-danger" id="description_error"></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div className="col">
-                                                    <button
-                                                        type="submit"
-                                                        className="btn btn-outline-primary btn-lg"
-                                                    >
-                                                        Save
-                                                    </button>
-                                                </div>
-                                            </form>
-                                        </div>
+                                            <div className="col">
+                                                <button
+                                                    type="submit"
+                                                    className="btn btn-outline-primary btn-lg"
+                                                >
+                                                    Save
+                                                </button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
