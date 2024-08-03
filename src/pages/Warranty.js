@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "../components/Loading.js";
+import { Link } from "react-router-dom";
 
 // Separate component for the table content
 function WarrantyTable() {
@@ -125,9 +126,10 @@ function Warranty() {
                                     <div className="page-header">
                                         <div className="row align-items-center">
                                             <div className="col-auto text-end float-end ms-auto download-grp">
-                                            <button to="/add-user" className="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#addAndEditWarrantyModal">
+                                            <Link to="/add-warranty" className="btn btn-outline-info"> 
+                                            {/* data-bs-toggle="modal" data-bs-target="#addAndEditWarrantyModal" */}
                                                 <i className="fas fa-plus px-2"></i>Add
-                                             </button>
+                                             </Link>
                                             </div>
                                         </div>
                                     </div>

@@ -16,6 +16,7 @@ import ListPurchases from './pages/ListPurchases';
 import AddPurchase from './pages/AddPurchase';
 import AddUser from './pages/AddUser';
 import Warranty from './pages/Warranty';
+import AddWarranty from './components/warranty/AddWarranty';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
               <Route path="/add-purchase" element={<AddPurchase />} />
               <Route path="/add-user" element={<AddUser />} />
               <Route path="/list-warranties" element={<Warranty/>} /> 
+              <Route path="/add-warranty" element={<AddWarranty/>} /> 
               {/* Add more routes here */}
             </Routes>
           </div>

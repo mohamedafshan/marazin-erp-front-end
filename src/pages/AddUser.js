@@ -107,7 +107,7 @@ function AddUser() {
                                                     <h5 className="mb-4">Roles and Permissions</h5>
                                                     <div className="col-md-4">
                                                         <div className="mb-3">
-                                                            <div className="form-group">
+                                                            <div className="form-check">
                                                                 <input className="form-check-input" type="checkbox" value=""
                                                                     onClick={handleToggleLoginFields} id="allowLoginCheckbox" />
                                                                 <label className="form-check-label" for="allowLoginCheckbox">
@@ -169,7 +169,7 @@ function AddUser() {
                                                     <b>Access locations</b>
                                                 </div>
                                                 <div className="col-md-2">
-                                                    <div className="form-group">
+                                                    <div className="form-check">
                                                         <input className="form-check-input" type="checkbox" value=""
                                                             id="allowLogin" />
                                                         <label className="form-check-label" for="allowLogin">
@@ -179,7 +179,7 @@ function AddUser() {
                                                 </div>
 
                                                 <div className="col-md-2">
-                                                    <div className="form-group">
+                                                    <div className="form-check">
                                                         <input className="form-check-input" type="checkbox" value=""
                                                             id="awesomeShop" />
                                                         <label className="form-check-label" for="awesomeShop">
