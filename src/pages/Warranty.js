@@ -77,12 +77,10 @@ function WarrantyTable() {
                 >
                     Delete
                 </button>
-                <Link to={'/edit-warranty/${id}'}
-                    type="button"
-                    className="btn btn-primary"
-                >
-                    Edit
-                </Link>
+                    <Link to={`/edit-warranty/${item.id}`} className="btn btn-primary">
+                        Edit
+                    </Link>
+
                 </td>
             </tr>
         );

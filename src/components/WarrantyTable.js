@@ -1,5 +1,4 @@
-// WarrantyTable.js
-import React, { useEffect, useState,useMemo } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import { useTable } from "react-table";
 import Loading from "../components/Loading.js";
@@ -8,55 +7,43 @@ const WarrantyTable = () => {
     const [loading, setLoading] = useState(true);
     const [warranty, setWarranty] = useState([]);
 
-    const fetchWarrantyData = () => {
-        setLoading(true);
-        axios
-            .get("http://127.0.0.1:8000/api/warranty-get-all")
-            .then((res) => {
-                console.log(res);
-                setWarranty(res.data.message);
-                setLoading(false);
-            })
-            .catch((error) => {
-                console.error("There was an error fetching the data!", error);
-                setLoading(false);
-            });
+    const fetchWarrantyData = async () => {
+        try {
+            const res = await axios.get("http://127.0.0.1:8000/api/warranty-get-all");
+            setWarranty(res.data.message); // Assuming res.data.message is an array of warranties
+            setLoading(false);
+        } catch (error) {
+            console.error("There was an error fetching the data!", error);
+            setLoading(false);
+        }
     };
 
     useEffect(() => {
         fetchWarrantyData();
     }, []);
 
-    if (loading) {
-        return <Loading />;
-    }
-
-    const deleteWarranty = (e, id) => {
+    const deleteWarranty = async (e, id) => {
         e.preventDefault();
         const thisClicked = e.currentTarget;
         thisClicked.innerText = 'Deleting...';
 
-        axios
-            .delete(`http://127.0.0.1:8000/api/warranty-delete/${id}`)
-            .then((res) => {
-                alert('Successfully deleted');
-                setWarranty((prevWarranties) => prevWarranties.filter((item) => item.id !== id));
-            })
-            .catch((error) => {
-                if (error.response) {
-                    if (error.response.status === 404) {
-                        alert("Error: " + error.response.data.message);
-                    } else {
-                        alert("An error occurred. Please try again.");
-                    }
-                } else {
-                    console.error("Error:", error);
-                    alert("An unexpected error occurred.");
-                }
-            });
+        try {
+            await axios.delete(`http://127.0.0.1:8000/api/warranty-delete/${id}`);
+            alert('Successfully deleted');
+            setWarranty((prevWarranties) => prevWarranties.filter((item) => item.id !== id));
+        } catch (error) {
+            console.error("Error:", error);
+            if (error.response && error.response.status === 404) {
+                alert("Error: " + error.response.data.message);
+            } else {
+                alert("An error occurred. Please try again.");
+            }
+        } finally {
+            thisClicked.innerText = 'Delete';
+        }
     };
 
-    const columns = React.useMemo(
+    const columns = useMemo(
         () => [
             {
                 Header: 'ID',
@@ -76,7 +63,7 @@ const WarrantyTable = () => {
             },
             {
                 Header: 'Period',
-                accessor: 'duration_type',
+                accessor: 'duration_type', // Ensure this matches your API's response key
             },
             {
                 Header: 'Action',
@@ -101,6 +88,10 @@ const WarrantyTable = () => {
         rows,
         prepareRow,
     } = useTable({ columns, data: warranty });
+
+    if (loading) {
+        return <Loading />;
+    }
 
     return (
         <div className="table-responsive">

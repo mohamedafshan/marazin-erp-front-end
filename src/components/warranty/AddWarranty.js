@@ -31,7 +31,7 @@ export default function AddWarranty() {
 
         axios.post('http://127.0.0.1:8000/api/warranty-store', data)
             .then(res => {
-                alert('Success');
+                // alert('Success');
                 navigate('/list-warranties');
                 setLoading(false);
             })
