@@ -12,7 +12,7 @@ function AdminDashboard() {
                                 <div class="page-sub-header">
                                     <h3 class="page-title">Welcome Admin!</h3>
                                     <ul class="breadcrumb">
-                                        <li class="breadcrumb-item"><Link to="index.html">Home</Link></li>
+                                        <li class="breadcrumb-item"><Link to="/">Home</Link></li>
                                         <li class="breadcrumb-item active">Admin</li>
                                     </ul>
                                 </div>

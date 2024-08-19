@@ -45,9 +45,11 @@ function WarrantyTable() {
             .delete(`http://127.0.0.1:8000/api/warranty-delete/${id}`)
             .then((res) => {
                 alert('Successfully deleted');
-                thisClicked.closest("tr").remove();
+                 // thisClicked.closest("tr").remove();
+                setWarranty(prevWarranties => prevWarranties.filter(item => item.id !== id));
             })
             .catch((error) => {
+                thisClicked.innerText = 'Delete'; // Revert text back on error
                 if (error.response) {
                     if (error.response.status === 404) {
                         alert("Error: " + error.response.data.message);
@@ -61,31 +63,32 @@ function WarrantyTable() {
             });
     };
 
-    const warrantyDetails = warranty.map((item, index) => {
-        return (
-            <tr key={index}>
-                <td>{index +1}</td>
-                <td>{item.name}</td>
-                <td>{item.description}</td>
-                <td>{item.duration}</td>
-                <td>{item.duration_type}</td>
-                <td>
-                <button
-                    type="button"
-                    onClick={(e) => deletewarranty(e, item.id)}
-                    className="btn btn-danger"
-                >
-                    Delete
-                </button>
-                    <Link to={`/edit-warranty/${item.id}`} className="btn btn-primary">
-                        Edit
-                    </Link>
-
-                </td>
-            </tr>
-        );
-    });
-
+    function fetchtable() {
+        return warranty.map((item, index) => {
+            return (
+                <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{item.name}</td>
+                    <td>{item.description}</td>
+                    <td>{item.duration}</td>
+                    <td>{item.duration_type}</td>
+                    <td>
+                        <button
+                            type="button"
+                            onClick={(e) => deletewarranty(e, item.id)}
+                            className="btn btn-danger"
+                        >
+                            Delete
+                        </button>
+                        <Link to={`/edit-warranty/${item.id}`} className="btn btn-primary">
+                            Edit
+                        </Link>
+                    </td>
+                </tr>
+            );
+        });
+    }
+    
     return (
         <div className="table-responsive">
             <table className="datatable table table-striped" style={{ width: "100%" }}>
@@ -99,10 +102,11 @@ function WarrantyTable() {
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>{warrantyDetails}</tbody>
+                <tbody>{fetchtable()}</tbody>
             </table>
         </div>
     );
+    
 }
 
 // Main Warranty component

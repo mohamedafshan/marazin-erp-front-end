@@ -52,7 +52,7 @@ export default function Sidebar() {
                 </li>
                 <li>
                   <Link to="/add-student" className={isActive("/add-student")}>
-                    Sales Commissions Agents
+                    Sales Commissions
                   </Link>
                 </li>
               </ul>
@@ -81,6 +81,85 @@ export default function Sidebar() {
                 <li>
                   <Link to="/edit-teacher" className={isActive("/edit-teacher")}>
                     Import Contacts
+                  </Link>
+                </li>
+              </ul>
+            </li>
+
+            <li className={`submenu ${openSubmenu === "products" ? "active" : ""}`}>
+              <Link to="#" onClick={() => toggleSubmenu("products")}>
+                <i className="fas fa-chalkboard-teacher"></i> <span>products</span>
+                <span className="menu-arrow"></span>
+              </Link>
+              <ul style={{ display: openSubmenu === "products" ? "block" : "none" }}>
+                <li>
+                  <Link to="/listproduct" className={isActive("/listproduct")}>
+                    List products
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/addproduct" className={isActive("/addproduct")}>
+                    Add product
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/updateprice" className={isActive("/updateprice")}>
+                    Update Price
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/printlabel" className={isActive("/printlabel")}>
+                    Print Label
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/Variation" className={isActive("/Variation")}>
+                    Variation
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/Variationtitle" className={isActive("/Variationtitle")}>
+                    Variation Title
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/importProducts" className={isActive("/importProducts")}>
+                    Import Products
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/importOpeningStock" className={isActive("/importOpeningStock")}>
+                    Import Opening Stock
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/sellingpricegroup" className={isActive("/sellingpricegroup")}>
+                    Selling Price Group
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/unit" className={isActive("/unit")}>
+                   Unit
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/maincategory" className={isActive("/maincategory")}>
+                    Main Category
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/subcategory" className={isActive("/subcategory")}>
+                    Sub Category
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/brands" className={isActive("/brands")}>
+                    Brands
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/list-warranties" className={isActive("/list-warranties")}>
+                    Warranty
                   </Link>
                 </li>
               </ul>

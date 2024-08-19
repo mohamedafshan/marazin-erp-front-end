@@ -18,6 +18,7 @@ import AddUser from './pages/AddUser';
 import Warranty from './pages/Warranty';
 import AddWarranty from './components/warranty/AddWarranty';
 import EditWarranty from './components/warranty/EditWarranty';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
           </div>
         </div>
       </Router>
+      <Footer/>
     </React.StrictMode>
   );
 }
