@@ -12,7 +12,7 @@ function Users() {
                 <div className="page-sub-header">
                   <h3 className="page-title">Users</h3>
                   <ul className="breadcrumb">
-                    <li className="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
                     <li className="breadcrumb-item active">User</li>
                   </ul>
                 </div>
@@ -97,7 +97,7 @@ export default Users;
 //                 <div className="page-sub-header">
 //                   <h3 className="page-title">Users</h3>
 //                   <ul className="breadcrumb">
-//                     <li className="breadcrumb-item"><a href="index.html">Home</a></li>
+//                     <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
 //                     <li className="breadcrumb-item active">User</li>
 //                   </ul>
 //                 </div>
@@ -111,9 +111,9 @@ export default Users;
 //                     <div className="page-header">
 //                       <div className="row align-items-center">
 //                         <div className="col-auto text-end float-end ms-auto download-grp">
-//                           <a href="#" className="btn btn-outline-info">
+//                           <Link to="#" className="btn btn-outline-info">
 //                             <i className="fas fa-plus px-2"></i>Add
-//                           </a>
+//                           </Link>
 //                         </div>
 //                       </div>
 //                     </div>

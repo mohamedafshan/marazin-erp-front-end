@@ -1,19 +1,21 @@
+import { Link } from "react-router-dom";
+import { Image } from "react-bootstrap";
 function Header() {
     return (
         <>
             <div className="header">
                 <div className="header-left">
-                    <a href="index.html" className="logo">
-                        <img src="assets/img/logo.png" alt="Logo" />
-                    </a>
-                    <a href="index.html" className="logo logo-small">
-                        <img src="assets/img/logo-small.png" alt="Logo" width={30} height={30} />
-                    </a>
+                    <Link to="index.html" className="logo">
+                        <Image src="assets/img/logo.png" alt="Logo" />
+                    </Link>
+                    <Link to="index.html" className="logo logo-small">
+                        <Image src="assets/img/logo-small.png" alt="Logo" width={30} height={30} />
+                    </Link>
                 </div>
                 <div className="menu-toggle">
-                    <a href="javascript:void(0);" id="toggle_btn">
+                    <Link to="#" id="toggle_btn">
                         <i className="fas fa-bars" />
-                    </a>
+                    </Link>
                 </div>
                 <div className="top-nav-search">
                     <form>
@@ -21,40 +23,40 @@ function Header() {
                         <button className="btn" type="submit"><i className="fas fa-search" /></button>
                     </form>
                 </div>
-                <a className="mobile_btn" id="mobile_btn">
+                <Link className="mobile_btn" id="mobile_btn">
                     <i className="fas fa-bars" />
-                </a>
+                </Link>
                 <ul className="nav user-menu">
                     <li className="nav-item dropdown noti-dropdown language-drop me-2">
-                        <a href="#" className="dropdown-toggle nav-link header-nav-list" data-bs-toggle="dropdown">
-                            <img src="assets/img/icons/header-icon-01.svg" alt="Language Icon" />
-                        </a>
+                        <Link to="#" className="dropdown-toggle nav-link header-nav-list" data-bs-toggle="dropdown">
+                            <Image src="assets/img/icons/header-icon-01.svg" alt="Language Icon" />
+                        </Link>
                         <div className="dropdown-menu">
                             <div className="noti-content">
                                 <div>
-                                    <a className="dropdown-item" href="javascript:;"><i className="flag flag-lr me-2" />English</a>
-                                    <a className="dropdown-item" href="javascript:;"><i className="flag flag-bl me-2" />Francais</a>
-                                    <a className="dropdown-item" href="javascript:;"><i className="flag flag-cn me-2" />Turkce</a>
+                                    <Link className="dropdown-item" to="#"><i className="flag flag-lr me-2" />English</Link>
+                                    <Link className="dropdown-item" to="#"><i className="flag flag-bl me-2" />Francais</Link>
+                                    <Link className="dropdown-item" to="#"><i className="flag flag-cn me-2" />Turkce</Link>
                                 </div>
                             </div>
                         </div>
                     </li>
                     <li className="nav-item dropdown noti-dropdown me-2">
-                        <a href="#" className="dropdown-toggle nav-link header-nav-list" data-bs-toggle="dropdown">
-                            <img src="assets/img/icons/header-icon-05.svg" alt="Notifications Icon" />
-                        </a>
+                        <Link to="#" className="dropdown-toggle nav-link header-nav-list" data-bs-toggle="dropdown">
+                            <Image src="assets/img/icons/header-icon-05.svg" alt="Notifications Icon" />
+                        </Link>
                         <div className="dropdown-menu notifications">
                             <div className="topnav-dropdown-header">
                                 <span className="notification-title">Notifications</span>
-                                <a href="javascript:void(0)" className="clear-noti"> Clear All </a>
+                                <Link to="#" className="clear-noti"> Clear All </Link>
                             </div>
                             <div className="noti-content">
                                 <ul className="notification-list">
                                     <li className="notification-message">
-                                        <a href="#">
+                                        <Link to="#">
                                             <div className="media d-flex">
                                                 <span className="avatar avatar-sm flex-shrink-0">
-                                                    <img className="avatar-img rounded-circle" alt="User Image" src="assets/img/profiles/avatar-02.jpg" />
+                                                    <Image className="avatar-img rounded-circle" alt="User Image" src="assets/img/profiles/avatar-02.jpg" />
                                                 </span>
                                                 <div className="media-body flex-grow-1">
                                                     <p className="noti-details"><span className="noti-title">Carlson Tech</span> has
@@ -63,13 +65,13 @@ function Header() {
                                                     </p>
                                                 </div>
                                             </div>
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className="notification-message">
-                                        <a href="#">
+                                        <Link to="#">
                                             <div className="media d-flex">
                                                 <span className="avatar avatar-sm flex-shrink-0">
-                                                    <img className="avatar-img rounded-circle" alt="User Image" src="assets/img/profiles/avatar-11.jpg" />
+                                                    <Image className="avatar-img rounded-circle" alt="User Image" src="assets/img/profiles/avatar-11.jpg" />
                                                 </span>
                                                 <div className="media-body flex-grow-1">
                                                     <p className="noti-details"><span className="noti-title">International Software
@@ -78,13 +80,13 @@ function Header() {
                                                     </p>
                                                 </div>
                                             </div>
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className="notification-message">
-                                        <a href="#">
+                                        <Link to="#">
                                             <div className="media d-flex">
                                                 <span className="avatar avatar-sm flex-shrink-0">
-                                                    <img className="avatar-img rounded-circle" alt="User Image" src="assets/img/profiles/avatar-17.jpg" />
+                                                    <Image className="avatar-img rounded-circle" alt="User Image" src="assets/img/profiles/avatar-17.jpg" />
                                                 </span>
                                                 <div className="media-body flex-grow-1">
                                                     <p className="noti-details"><span className="noti-title">John Hendry</span> sent
@@ -94,13 +96,13 @@ function Header() {
                                                     </p>
                                                 </div>
                                             </div>
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className="notification-message">
-                                        <a href="#">
+                                        <Link to="#">
                                             <div className="media d-flex">
                                                 <span className="avatar avatar-sm flex-shrink-0">
-                                                    <img className="avatar-img rounded-circle" alt="User Image" src="assets/img/profiles/avatar-13.jpg" />
+                                                    <Image className="avatar-img rounded-circle" alt="User Image" src="assets/img/profiles/avatar-13.jpg" />
                                                 </span>
                                                 <div className="media-body flex-grow-1">
                                                     <p className="noti-details"><span className="noti-title">Mercury Software
@@ -110,43 +112,43 @@ function Header() {
                                                     </p>
                                                 </div>
                                             </div>
-                                        </a>
+                                        </Link>
                                     </li>
                                 </ul>
                             </div>
                             <div className="topnav-dropdown-footer">
-                                <a href="#">View all Notifications</a>
+                                <Link to="#">View all Notifications</Link>
                             </div>
                         </div>
                     </li>
                     <li className="nav-item zoom-screen me-2">
-                        <a href="#" className="nav-link header-nav-list win-maximize">
-                            <img src="assets/img/icons/header-icon-04.svg" alt="Fullscreen Icon" />
-                        </a>
+                        <Link to="#" className="nav-link header-nav-list win-maximize">
+                            <Image src="assets/img/icons/header-icon-04.svg" alt="Fullscreen Icon" />
+                        </Link>
                     </li>
                     <li className="nav-item dropdown has-arrow new-user-menus">
-                        <a href="#" className="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+                        <Link to="#" className="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                             <span className="user-img">
-                                <img className="rounded-circle" src="assets/img/profiles/avatar-01.jpg" width={31} alt="Soeng Souy" />
+                                <Image className="rounded-circle" src="assets/img/profiles/avatar-01.jpg" width={31} alt="Soeng Souy" />
                                 <div className="user-text">
                                     <h6>Soeng Souy</h6>
                                     <p className="text-muted mb-0">Administrator</p>
                                 </div>
                             </span>
-                        </a>
+                        </Link>
                         <div className="dropdown-menu">
                             <div className="user-header">
                                 <div className="avatar avatar-sm">
-                                    <img src="assets/img/profiles/avatar-01.jpg" alt="User Image" className="avatar-img rounded-circle" />
+                                    <Image src="assets/img/profiles/avatar-01.jpg" alt="User Image" className="avatar-img rounded-circle" />
                                 </div>
                                 <div className="user-text">
                                     <h6>Soeng Souy</h6>
                                     <p className="text-muted mb-0">Administrator</p>
                                 </div>
                             </div>
-                            <a className="dropdown-item" href="profile.html">My Profile</a>
-                            <a className="dropdown-item" href="inbox.html">Inbox</a>
-                            <a className="dropdown-item" href="login.html">Logout</a>
+                            <Link className="dropdown-item" to="profile.html">My Profile</Link>
+                            <Link className="dropdown-item" to="inbox.html">Inbox</Link>
+                            <Link className="dropdown-item" to="login.html">Logout</Link>
                         </div>
                     </li>
                 </ul>

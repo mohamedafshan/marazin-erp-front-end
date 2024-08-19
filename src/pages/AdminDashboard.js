@@ -1,5 +1,6 @@
 import React from "react";
 import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
 function AdminDashboard() {
     return (
         <>
@@ -11,14 +12,13 @@ function AdminDashboard() {
                                 <div class="page-sub-header">
                                     <h3 class="page-title">Welcome Admin!</h3>
                                     <ul class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                        <li class="breadcrumb-item"><Link to="index.html">Home</Link></li>
                                         <li class="breadcrumb-item active">Admin</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-
 
                     <div class="row">
                         <div class="col-xl-3 col-sm-6 col-12 d-flex">
@@ -96,8 +96,8 @@ function AdminDashboard() {
                                             <ul class="chart-list-out">
                                                 <li><span class="circle-blue"></span>Teacher</li>
                                                 <li><span class="circle-green"></span>Student</li>
-                                                <li class="star-menus"><a href="javascript:;"><i
-                                                    class="fas fa-ellipsis-v"></i></a></li>
+                                                <li class="star-menus"><Link to="#"><i
+                                                    class="fas fa-ellipsis-v"></i></Link></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -120,8 +120,8 @@ function AdminDashboard() {
                                             <ul class="chart-list-out">
                                                 <li><span class="circle-blue"></span>Girls</li>
                                                 <li><span class="circle-green"></span>Boys</li>
-                                                <li class="star-menus"><a href="javascript:;"><i
-                                                    class="fas fa-ellipsis-v"></i></a></li>
+                                                <li class="star-menus"><Link to="#"><i
+                                                    class="fas fa-ellipsis-v"></i></Link></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -141,7 +141,7 @@ function AdminDashboard() {
                                 <div class="card-header d-flex align-items-center">
                                     <h5 class="card-title">Star Students</h5>
                                     <ul class="chart-list-out student-ellips">
-                                        <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a>
+                                        <li class="star-menus"><Link to="#"><i class="fas fa-ellipsis-v"></i></Link>
                                         </li>
                                     </ul>
                                 </div>
@@ -164,12 +164,12 @@ function AdminDashboard() {
                                                         <div>PRE2209</div>
                                                     </td>
                                                     <td class="text-nowrap">
-                                                        <a href="profile.html">
+                                                        <Link to="profile.html">
                                                             <img class="rounded-circle"
                                                                 src="assets/img/profiles/avatar-02.jpg" width="25"
                                                                 alt="Star Students" />
                                                             John Smith
-                                                        </a>
+                                                        </Link>
                                                     </td>
                                                     <td class="text-center">1185</td>
                                                     <td class="text-center">98%</td>
@@ -182,12 +182,12 @@ function AdminDashboard() {
                                                         <div>PRE1245</div>
                                                     </td>
                                                     <td class="text-nowrap">
-                                                        <a href="profile.html">
+                                                        <Link to="profile.html">
                                                             <img class="rounded-circle"
                                                                 src="assets/img/profiles/avatar-01.jpg" width="25"
                                                                 alt="Star Students" />
                                                             Jolie Hoskins
-                                                        </a>
+                                                        </Link>
                                                     </td>
                                                     <td class="text-center">1195</td>
                                                     <td class="text-center">99.5%</td>
@@ -200,12 +200,12 @@ function AdminDashboard() {
                                                         <div>PRE1625</div>
                                                     </td>
                                                     <td class="text-nowrap">
-                                                        <a href="profile.html">
+                                                        <Link to="profile.html">
                                                             <img class="rounded-circle"
                                                                 src="assets/img/profiles/avatar-03.jpg" width="25"
                                                                 alt="Star Students" />
                                                             Pennington Joy
-                                                        </a>
+                                                        </Link>
                                                     </td>
                                                     <td class="text-center">1196</td>
                                                     <td class="text-center">99.6%</td>
@@ -218,12 +218,12 @@ function AdminDashboard() {
                                                         <div>PRE2516</div>
                                                     </td>
                                                     <td class="text-nowrap">
-                                                        <a href="profile.html">
+                                                        <Link to="profile.html">
                                                             <img class="rounded-circle"
                                                                 src="assets/img/profiles/avatar-04.jpg" width="25"
                                                                 alt="Star Students" />
                                                             Millie Marsden
-                                                        </a>
+                                                        </Link>
                                                     </td>
                                                     <td class="text-center">1187</td>
                                                     <td class="text-center">98.2%</td>
@@ -236,12 +236,12 @@ function AdminDashboard() {
                                                         <div>PRE2209</div>
                                                     </td>
                                                     <td class="text-nowrap">
-                                                        <a href="profile.html">
+                                                        <Link to="profile.html">
                                                             <img class="rounded-circle"
                                                                 src="assets/img/profiles/avatar-05.jpg" width="25"
                                                                 alt="Star Students" />
                                                             John Smith
-                                                        </a>
+                                                        </Link>
                                                     </td>
                                                     <td class="text-center">1185</td>
                                                     <td class="text-center">98%</td>
@@ -262,7 +262,7 @@ function AdminDashboard() {
                                 <div class="card-header d-flex align-items-center">
                                     <h5 class="card-title ">Student Activity </h5>
                                     <ul class="chart-list-out student-ellips">
-                                        <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a>
+                                        <li class="star-menus"><Link to="#"><i class="fas fa-ellipsis-v"></i></Link>
                                         </li>
                                     </ul>
                                 </div>
