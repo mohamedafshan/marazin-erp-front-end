@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import $ from 'jquery'; // Import jQuery
+import './sidebar.css'; // Import your CSS file
 
-export default function Sidebar() {
+const Sidebar = () => {
   const [openSubmenu, setOpenSubmenu] = useState(null);
   const location = useLocation();
 
@@ -12,6 +14,65 @@ export default function Sidebar() {
   const isActive = (path) => {
     return location.pathname === path ? "active" : "";
   };
+
+  useEffect(() => {
+    function init() {
+      $("#sidebar-menu a").on("click", function (e) {
+        if ($(this).parent().hasClass("submenu")) {
+          e.preventDefault();
+        }
+
+        if (!$(this).hasClass("subdrop")) {
+          $("ul", $(this).parents("ul:first")).slideUp(350);
+          $("a", $(this).parents("ul:first")).removeClass("subdrop");
+          $(this).next("ul").slideDown(350);
+          $(this).addClass("subdrop");
+        } else {
+          $(this).removeClass("subdrop");
+          $(this).next("ul").slideUp(350);
+        }
+      });
+
+      $("#sidebar-menu ul li.submenu a.active")
+        .parents("li:last")
+        .children("a:first")
+        .addClass("active")
+        .trigger("click");
+
+      // Add sidebar overlay on body
+      $("body").append('<div class="sidebar-overlay"></div>');
+
+      // Mobile button click event
+      $(document).on("click", "#mobile_btn", function () {
+        $(".main-wrapper").toggleClass("slide-nav");
+        $(".sidebar-overlay").toggleClass("opened");
+        $("html").toggleClass("menu-opened");
+        return false;
+      });
+
+      // Toggle password visibility
+      if ($(".toggle-password").length > 0) {
+        $(document).on("click", ".toggle-password", function () {
+          $(this).toggleClass("feather-eye feather-eye-off");
+          var input = $(".pass-input");
+          if (input.attr("type") === "password") {
+            input.attr("type", "text");
+          } else {
+            input.attr("type", "password");
+          }
+        });
+      }
+    }
+
+    init();
+
+    // Cleanup function to remove event listeners
+    return () => {
+      $("#sidebar-menu a").off("click");
+      $(document).off("click", "#mobile_btn");
+      $(document).off("click", ".toggle-password");
+    };
+  }, []);
 
   return (
     <div className="sidebar" id="sidebar">
@@ -88,18 +149,18 @@ export default function Sidebar() {
 
             <li className={`submenu ${openSubmenu === "products" ? "active" : ""}`}>
               <Link to="#" onClick={() => toggleSubmenu("products")}>
-                <i className="fas fa-chalkboard-teacher"></i> <span>products</span>
+                <i className="fas fa-cogs"></i> <span>Products</span>
                 <span className="menu-arrow"></span>
               </Link>
               <ul style={{ display: openSubmenu === "products" ? "block" : "none" }}>
                 <li>
                   <Link to="/listproduct" className={isActive("/listproduct")}>
-                    List products
+                    List Products
                   </Link>
                 </li>
                 <li>
                   <Link to="/addproduct" className={isActive("/addproduct")}>
-                    Add product
+                    Add Product
                   </Link>
                 </li>
                 <li>
@@ -139,7 +200,7 @@ export default function Sidebar() {
                 </li>
                 <li>
                   <Link to="/unit" className={isActive("/unit")}>
-                   Unit
+                    Unit
                   </Link>
                 </li>
                 <li>
@@ -170,4 +231,6 @@ export default function Sidebar() {
       </div>
     </div>
   );
-}
+};
+
+export default Sidebar;

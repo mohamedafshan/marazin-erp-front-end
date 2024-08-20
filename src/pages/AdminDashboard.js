@@ -1,5 +1,4 @@
 import React from "react";
-import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 function AdminDashboard() {
     return (
@@ -370,7 +369,7 @@ function AdminDashboard() {
                         </div>
                     </div>
                 </div>
-                <Footer />
+                {/* <Footer /> */}
             </div>
         </>
     );

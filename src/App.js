@@ -2,8 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import SideBar from './components/SideBar';
+import Footer from './components/Footer';
 
-// Import more pages
+// Import pages
 import AdminDashboard from './pages/AdminDashboard';
 import TeacherDashboard from './pages/TeacherDashboard';
 import StudentDashboard from './pages/StudentDashboard';
@@ -18,7 +19,6 @@ import AddUser from './pages/AddUser';
 import Warranty from './pages/Warranty';
 import AddWarranty from './components/warranty/AddWarranty';
 import EditWarranty from './components/warranty/EditWarranty';
-import Footer from './components/Footer';
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
           <SideBar />
           <div className="content container-fluid">
             <Routes>
-            <Route path="/" element={<AdminDashboard />} />
+              <Route path="/" element={<AdminDashboard />} />
               <Route path="/admin-dashboard" element={<AdminDashboard />} />
               <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
               <Route path="/student-dashboard" element={<StudentDashboard />} />
@@ -41,15 +41,15 @@ function App() {
               <Route path="/list-purchases" element={<ListPurchases />} />
               <Route path="/add-purchase" element={<AddPurchase />} />
               <Route path="/add-user" element={<AddUser />} />
-              <Route path="/list-warranties" element={<Warranty/>} /> 
-              <Route path="/add-warranty" element={<AddWarranty/>} /> 
-              <Route path="/edit-warranty/:id" element={<EditWarranty/>} /> 
+              <Route path="/list-warranties" element={<Warranty />} />
+              <Route path="/add-warranty" element={<AddWarranty />} />
+              <Route path="/edit-warranty/:id" element={<EditWarranty />} />
               {/* Add more routes here */}
             </Routes>
           </div>
+          <Footer />
         </div>
       </Router>
-      <Footer/>
     </React.StrictMode>
   );
 }

@@ -1,0 +1,12 @@
+.main-wrapper {
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+  }
+
+  html.menu-opened {
+    overflow: hidden;
+  }
+  html.menu-opened body {
+    overflow: hidden;
+  }
