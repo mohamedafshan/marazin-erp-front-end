@@ -8,17 +8,18 @@ import Footer from './components/Footer';
 import AdminDashboard from './pages/AdminDashboard';
 import TeacherDashboard from './pages/TeacherDashboard';
 import StudentDashboard from './pages/StudentDashboard';
-import Users from './pages/Users';
-import Roles from './pages/Roles';
+import Users from './pages/usermanagement/Users';
+import Roles from './pages/usermanagement/Roles';
 import SalesCommission from './pages/SalesCommission';
 import ListProducts from './pages/ListProducts';
 import AddProduct from './pages/AddProduct';
 import ListPurchases from './pages/ListPurchases';
 import AddPurchase from './pages/AddPurchase';
-import AddUser from './pages/AddUser';
+import AddUser from './pages/usermanagement/AddUser';
 import Warranty from './pages/Warranty';
 import AddWarranty from './components/warranty/AddWarranty';
 import EditWarranty from './components/warranty/EditWarranty';
+import AddRole from './pages/usermanagement/AddRole';
 
 function App() {
   return (
@@ -33,17 +34,22 @@ function App() {
               <Route path="/admin-dashboard" element={<AdminDashboard />} />
               <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
               <Route path="/student-dashboard" element={<StudentDashboard />} />
-              <Route path="/users" element={<Users />} />
-              <Route path="/roles" element={<Roles />} />
               <Route path="/sales-commission" element={<SalesCommission />} />
               <Route path="/list-products" element={<ListProducts />} />
               <Route path="/add-product" element={<AddProduct />} />
               <Route path="/list-purchases" element={<ListPurchases />} />
               <Route path="/add-purchase" element={<AddPurchase />} />
-              <Route path="/add-user" element={<AddUser />} />
+             
               <Route path="/list-warranties" element={<Warranty />} />
               <Route path="/add-warranty" element={<AddWarranty />} />
               <Route path="/edit-warranty/:id" element={<EditWarranty />} />
+
+              {/* userManage */}
+              <Route path="/users" element={<Users />} />
+              <Route path="/add-user" element={<AddUser />} />
+              <Route path="/roles" element={<Roles />} />
+              <Route path="/add-role" element={<AddRole />} />
+
               {/* Add more routes here */}
             </Routes>
           </div>

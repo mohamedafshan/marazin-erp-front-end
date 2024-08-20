@@ -102,12 +102,12 @@ const Sidebar = () => {
               </Link>
               <ul style={{ display: openSubmenu === "usermanagement" ? "block" : "none" }}>
                 <li>
-                  <Link to="/students" className={isActive("/students")}>
+                  <Link to="/users" className={isActive("/users")}>
                     Users
                   </Link>
                 </li>
                 <li>
-                  <Link to="/student-details" className={isActive("/student-details")}>
+                  <Link to="/roles" className={isActive("/roles")}>
                     Roles
                   </Link>
                 </li>
