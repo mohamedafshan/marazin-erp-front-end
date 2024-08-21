@@ -112,7 +112,7 @@ const Sidebar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/add-student" className={isActive("/add-student")}>
+                  <Link to="/sales-commission" className={isActive("/sales-commission")}>
                     Sales Commissions
                   </Link>
                 </li>
@@ -125,12 +125,12 @@ const Sidebar = () => {
               </Link>
               <ul style={{ display: openSubmenu === "contacts" ? "block" : "none" }}>
                 <li>
-                  <Link to="/teachers" className={isActive("/teachers")}>
+                  <Link to="/supplier" className={isActive("/supplier")}>
                     Supplier
                   </Link>
                 </li>
                 <li>
-                  <Link to="/teacher-details" className={isActive("/teacher-details")}>
+                  <Link to="/customer" className={isActive("/customer")}>
                     Customers
                   </Link>
                 </li>

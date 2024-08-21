@@ -12,15 +12,14 @@ function Users() {
                 <div className="page-sub-header">
                   <h3 className="page-title">Users</h3>
                   <ul className="breadcrumb">
-                    <li className="breadcrumb-item"><Link to="index.html">Home</Link></li>
+                    <li className="breadcrumb-item">User Management</li>
                     <li className="breadcrumb-item active">User</li>
                   </ul>
                 </div>
               </div>
             </div>
 
-        
-              <div className="row">
+              <div className="row mt-3">
                   <div className="col-sm-12">
                       <div className="card card-table">
                           <div className="card-body">

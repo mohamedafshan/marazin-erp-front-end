@@ -10,7 +10,7 @@ import TeacherDashboard from './pages/TeacherDashboard';
 import StudentDashboard from './pages/StudentDashboard';
 import Users from './pages/usermanagement/Users';
 import Roles from './pages/usermanagement/Roles';
-import SalesCommission from './pages/SalesCommission';
+import SalesCommission from './pages/usermanagement/SalesCommission';
 import ListProducts from './pages/ListProducts';
 import AddProduct from './pages/AddProduct';
 import ListPurchases from './pages/ListPurchases';
@@ -20,6 +20,8 @@ import Warranty from './pages/Warranty';
 import AddWarranty from './components/warranty/AddWarranty';
 import EditWarranty from './components/warranty/EditWarranty';
 import AddRole from './pages/usermanagement/AddRole';
+import Supplier from './pages/contacts/Supplier';
+import Customer from './pages/contacts/Customer';
 
 function App() {
   return (
@@ -34,7 +36,7 @@ function App() {
               <Route path="/admin-dashboard" element={<AdminDashboard />} />
               <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
               <Route path="/student-dashboard" element={<StudentDashboard />} />
-              <Route path="/sales-commission" element={<SalesCommission />} />
+              
               <Route path="/list-products" element={<ListProducts />} />
               <Route path="/add-product" element={<AddProduct />} />
               <Route path="/list-purchases" element={<ListPurchases />} />
@@ -49,6 +51,11 @@ function App() {
               <Route path="/add-user" element={<AddUser />} />
               <Route path="/roles" element={<Roles />} />
               <Route path="/add-role" element={<AddRole />} />
+              <Route path="/sales-commission" element={<SalesCommission />} />
+
+              {/* contacts */}
+              <Route path="/supplier" element={<Supplier />} />
+              <Route path="/customer" element={<Customer />} />
 
               {/* Add more routes here */}
             </Routes>
