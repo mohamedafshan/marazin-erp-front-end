@@ -164,12 +164,12 @@ const Sidebar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/updateprice" className={isActive("/updateprice")}>
+                  <Link to="/update-price" className={isActive("/update-price")}>
                     Update Price
                   </Link>
                 </li>
                 <li>
-                  <Link to="/printlabel" className={isActive("/printlabel")}>
+                  <Link to="/print-label" className={isActive("/print-label")}>
                     Print Label
                   </Link>
                 </li>

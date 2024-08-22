@@ -26,6 +26,10 @@ import ImportContact from './pages/contacts/ImportContact';
 import Products from './pages/products/Products';
 import Purchase from './pages/purchase/purchase';
 import AddPurchase from './pages/purchase/AddPurchase';
+import ListPurchaseReturn from './pages/purchase/ListPurchaseReturn';
+import AddPurchaseReturn from './pages/purchase/AddPurchaseReturn';
+import UpdatePrice from './pages/products/UpdatePrice';
+import PrintLabel from './pages/products/PrintLabel';
 
 function App() {
   return (
@@ -71,6 +75,10 @@ function App() {
               {/* purchase */}
               <Route path="/purchase" element={<Purchase />} />
               <Route path="/add-purchase" element={<AddPurchase />} />
+              <Route path="/list-purchase-return" element={<ListPurchaseReturn />} />
+              <Route path="/add-purchase-return" element={<AddPurchaseReturn />} />
+              <Route path="/update-price" element={<UpdatePrice />} />
+              <Route path="/print-label" element={<PrintLabel />} />
 
               {/* Add more routes here */}
             </Routes>

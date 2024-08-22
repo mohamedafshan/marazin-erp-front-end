@@ -120,7 +120,7 @@ const Purchase = () => {
                     <div className="row align-items-center">
                       <div className="col-auto text-end float-end ms-auto download-grp">
                         {/* <!-- Button trigger modal --> */}
-                        <Link href="#">
+                        <Link to="/add-purchase">
                           <button
                             type="button"
                             className="btn btn-outline-info"

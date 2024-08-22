@@ -396,85 +396,209 @@ const AddPurchase = () => {
           </div>
 
           <div className="row">
-                <div className="col-md-12">
-                    <div className="card card-table">
-                        <div className="card-body">
-                            <div className="page-header">
-                                <h5>Add Payment</h5>
-                                <div className="row">
-                                    <div className="col-md-4">
-                                        <div className="input-group mb-3">
-                                            <span className="input-group-text" id="basic-addon1"><i
-                                                    className="fas fa-money-bill-alt"></i></span>
-                                            <input type="text" className="form-control" placeholder="Advance Balance"
-                                                aria-label="Example text with button addon" aria-describedby="button-addon1"/>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-4">
-                                        <div className="form-group local-forms calendar-icon">
-                                            <label>Purchase Date<span className="login-danger">*</span></label>
-                                            <input className="form-control datetimepicker" type="text"
-                                                placeholder="DD-MM-YYYY"/>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-4">
-                                        <div className="mb-3">
-                                            <div className="input-group local-forms">
-                                                <span className="input-group-text" id="basic-addon1"><i
-                                                        className="fas fa-user"></i></span>
-                                                <select className="form-control form-select"
-                                                    aria-label="Example text with button addon" aria-describedby="button-addon1">
-                                                    <option selected disabled>Payment Method</option>
-                                                    <option>Cash</option>
-                                                    <option>Advance</option>
-                                                    <option>Cheque</option>
-                                                    <option>Bank Transfer</option>
-                                                    <option>Other</option>
-                                                    <option>Custom Payment 1</option>
-                                                    <option>Custome Payment 2</option>
-                                                    <option>Custome Payment 3</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-4">
-                                        <div className="input-group local-forms">
-                                            <span className="input-group-text" id="basic-addon1"><i
-                                                    className="fas fa-user"></i></span>
-                                            <select className="form-control form-select"
-                                                aria-label="Example text with button addon" aria-describedby="button-addon1">
-                                                <option selected disabled>Payment Account</option>
-                                                <option>None</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-12">
-                                        <div className="mt-4">
-                                            <div className="form-group local-forms">
-                                                <label>Payment note<span className="login-danger"></span></label>
-                                                <textarea className="form-control" id="edit_description" name="description" type="text" placeholder="Payment note"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr/>
-                                </div>
-                                <div className="row justify-content-end">
-                                    <div className="col-4">
-                                        <b>Payment due:</b>
-                                        <p>0.00</p>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-4">
-                                        <button className="btn btn-primary btn-lg" type="button">Save</button>
-                                    </div>
-                                </div>
-                            </div>
+            <div className="col-md-12">
+              <div className="card card-table">
+                <div className="card-body">
+                  <div className="page-header">
+                    <div className="row justify-content-between">
+                      <div className="col-4 col-xs-12">
+                        <div className="mb-3">
+                          <div className="form-group local-forms">
+                            <label>Shipping Details<span className="login-danger"></span></label>
+                            <input className="form-control" type="text" placeholder="Shipping Details" />
+                          </div>
                         </div>
+                      </div>
+                      <div className="col-4 col-xs-12">
+                        <div className="mb-3">
+                          <div className="form-group local-forms">
+                            <label>(+) Additional Shipping charges<span
+                              className="login-danger"></span></label>
+                            <input className="form-control" type="text" placeholder="0" />
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                </div>
-            </div>
+                    <div className="row">
+                      <div className="d-flex justify-content-center">
+                        <button className="btn btn-primary mt-xs-2px" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#moreinformation1" aria-expanded="false"
+                          aria-controls="collapseExample">
+                          Add additional expenses <i className="fas fa-sort-down "></i>
+                        </button>
+                      </div>
 
+                      <div>
+                        <div className="collapse" id="moreinformation1">
+                          <div className="student-group-form">
+                            <div className="row justify-content-end mt-5">
+                              <div className="col-8">
+                                <div className="row">
+                                  <div className="col-md-6">
+                                    <div className="mb-3">
+                                      <div className="form-group local-forms">
+                                        <label>Additional expense name<span
+                                          className="login-danger"></span></label>
+                                        <input className="form-control" type="text" />
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div className="col-md-6">
+                                    <div className="mb-3">
+                                      <div className="form-group local-forms">
+                                        <label>Amount<span className="login-danger"></span></label>
+                                        <input className="form-control" type="text"
+                                          placeholder="0" />
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <div className="col-md-6">
+                                    <div className="mb-3">
+                                      <div className="form-group local-forms">
+                                        <input className="form-control" type="text" />
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div className="col-md-6">
+                                    <div className="mb-3">
+                                      <div className="form-group local-forms">
+                                        <input className="form-control" type="text"
+                                          placeholder="0" />
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <div className="col-md-6">
+                                    <div className="mb-3">
+                                      <div className="form-group local-forms">
+                                        <input className="form-control" type="text" />
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div className="col-md-6">
+                                    <div className="mb-3">
+                                      <div className="form-group local-forms">
+                                        <input className="form-control" type="text"
+                                          placeholder="0" />
+                                      </div>
+                                    </div>
+                                  </div>
+
+
+                                  <div className="col-md-6">
+                                    <div className="mb-3">
+                                      <div className="form-group local-forms">
+                                        <input className="form-control" type="text" />
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div className="col-md-6">
+                                    <div className="mb-3">
+                                      <div className="form-group local-forms">
+                                        <input className="form-control" type="text"
+                                          placeholder="0" />
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="row justify-content-end">
+                              <div className="col-3">
+                                <b>Purchase Total:</b>
+                                <p>$ 0.00</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col-md-12">
+              <div className="card card-table">
+                <div className="card-body">
+                  <div className="page-header">
+                    <h5>Add Payment</h5>
+                    <div className="row">
+                      <div className="col-md-4">
+                        <div className="input-group mb-3">
+                          <span className="input-group-text" id="basic-addon1"><i
+                            className="fas fa-money-bill-alt"></i></span>
+                          <input type="text" className="form-control" placeholder="Advance Balance"
+                            aria-label="Example text with button addon" aria-describedby="button-addon1" />
+                        </div>
+                      </div>
+                      <div className="col-md-4">
+                        <div className="form-group local-forms calendar-icon">
+                          <label>Purchase Date<span className="login-danger">*</span></label>
+                          <input className="form-control datetimepicker" type="text"
+                            placeholder="DD-MM-YYYY" />
+                        </div>
+                      </div>
+                      <div className="col-md-4">
+                        <div className="mb-3">
+                          <div className="input-group local-forms">
+                            <span className="input-group-text" id="basic-addon1"><i
+                              className="fas fa-user"></i></span>
+                            <select className="form-control form-select"
+                              aria-label="Example text with button addon" aria-describedby="button-addon1">
+                              <option selected disabled>Payment Method</option>
+                              <option>Cash</option>
+                              <option>Advance</option>
+                              <option>Cheque</option>
+                              <option>Bank Transfer</option>
+                              <option>Other</option>
+                              <option>Custom Payment 1</option>
+                              <option>Custome Payment 2</option>
+                              <option>Custome Payment 3</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-4">
+                        <div className="input-group local-forms">
+                          <span className="input-group-text" id="basic-addon1"><i
+                            className="fas fa-user"></i></span>
+                          <select className="form-control form-select"
+                            aria-label="Example text with button addon" aria-describedby="button-addon1">
+                            <option selected disabled>Payment Account</option>
+                            <option>None</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div className="col-md-12">
+                        <div className="mt-4">
+                          <div className="form-group local-forms">
+                            <label>Payment note<span className="login-danger"></span></label>
+                            <textarea className="form-control" id="edit_description" name="description" type="text" placeholder="Payment note"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                      <hr />
+                    </div>
+                    <div className="row justify-content-end">
+                      <div className="col-4">
+                        <b>Payment due:</b>
+                        <p>0.00</p>
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col-4">
+                        <button className="btn btn-primary btn-lg" type="button">Save</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
         </div>
       </div>
