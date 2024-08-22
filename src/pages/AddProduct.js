@@ -3,7 +3,11 @@ import React from "react";
 function AddProduct() {
     return (
         <>
-          <h2>Teacher Dashboard</h2>
+           <div className="page-wrapper">
+              <div className="content container-fluid">
+                <h1>Hello</h1>
+              </div>
+            </div>
         </>
     );
 }

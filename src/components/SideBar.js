@@ -135,12 +135,12 @@ const Sidebar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/add-teacher" className={isActive("/add-teacher")}>
+                  <Link to="/customer-group" className={isActive("/customer-group")}>
                     Customer Groups
                   </Link>
                 </li>
                 <li>
-                  <Link to="/edit-teacher" className={isActive("/edit-teacher")}>
+                  <Link to="/import-contact" className={isActive("/import-contact")}>
                     Import Contacts
                   </Link>
                 </li>
@@ -154,7 +154,7 @@ const Sidebar = () => {
               </Link>
               <ul style={{ display: openSubmenu === "products" ? "block" : "none" }}>
                 <li>
-                  <Link to="/listproduct" className={isActive("/listproduct")}>
+                  <Link to="/products" className={isActive("/products")}>
                     List Products
                   </Link>
                 </li>
@@ -221,6 +221,25 @@ const Sidebar = () => {
                 <li>
                   <Link to="/list-warranties" className={isActive("/list-warranties")}>
                     Warranty
+                  </Link>
+                </li>
+              </ul>
+            </li>
+
+            <li className={`submenu ${openSubmenu === "purchase" ? "active" : ""}`}>
+              <Link to="#" onClick={() => toggleSubmenu("purchase")}>
+                <i className="fas fa-chalkboard-teacher"></i> <span>Purchase</span>
+                <span className="menu-arrow"></span>
+              </Link>
+              <ul style={{ display: openSubmenu === "purchase" ? "block" : "none" }}>
+                <li>
+                  <Link to="/purchase" className={isActive("/purchase")}>
+                    Purchase
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/add-purchase" className={isActive("/add-purchase")}>
+                    Add Purchase
                   </Link>
                 </li>
               </ul>

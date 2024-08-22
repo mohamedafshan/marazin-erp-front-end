@@ -11,10 +11,9 @@ import StudentDashboard from './pages/StudentDashboard';
 import Users from './pages/usermanagement/Users';
 import Roles from './pages/usermanagement/Roles';
 import SalesCommission from './pages/usermanagement/SalesCommission';
-import ListProducts from './pages/ListProducts';
 import AddProduct from './pages/AddProduct';
 import ListPurchases from './pages/ListPurchases';
-import AddPurchase from './pages/AddPurchase';
+// import AddPurchase from './pages/AddPurchase';
 import AddUser from './pages/usermanagement/AddUser';
 import Warranty from './pages/Warranty';
 import AddWarranty from './components/warranty/AddWarranty';
@@ -22,6 +21,11 @@ import EditWarranty from './components/warranty/EditWarranty';
 import AddRole from './pages/usermanagement/AddRole';
 import Supplier from './pages/contacts/Supplier';
 import Customer from './pages/contacts/Customer';
+import CustomerGroup from './pages/contacts/CustomerGroup';
+import ImportContact from './pages/contacts/ImportContact';
+import Products from './pages/products/Products';
+import Purchase from './pages/purchase/purchase';
+import AddPurchase from './pages/purchase/AddPurchase';
 
 function App() {
   return (
@@ -36,11 +40,10 @@ function App() {
               <Route path="/admin-dashboard" element={<AdminDashboard />} />
               <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
               <Route path="/student-dashboard" element={<StudentDashboard />} />
-              
-              <Route path="/list-products" element={<ListProducts />} />
-              <Route path="/add-product" element={<AddProduct />} />
+            
+             
               <Route path="/list-purchases" element={<ListPurchases />} />
-              <Route path="/add-purchase" element={<AddPurchase />} />
+            
              
               <Route path="/list-warranties" element={<Warranty />} />
               <Route path="/add-warranty" element={<AddWarranty />} />
@@ -56,6 +59,18 @@ function App() {
               {/* contacts */}
               <Route path="/supplier" element={<Supplier />} />
               <Route path="/customer" element={<Customer />} />
+              <Route path="/customer-group" element={<CustomerGroup />} />
+              <Route path="/import-contact" element={<ImportContact />} />
+              
+
+              {/* product */}
+              <Route path="/products" element={<Products />} />
+              <Route path="/add-product" element={<AddProduct />} />
+
+
+              {/* purchase */}
+              <Route path="/purchase" element={<Purchase />} />
+              <Route path="/add-purchase" element={<AddPurchase />} />
 
               {/* Add more routes here */}
             </Routes>
