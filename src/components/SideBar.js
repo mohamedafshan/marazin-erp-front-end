@@ -174,7 +174,7 @@ const Sidebar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/Variation" className={isActive("/Variation")}>
+                  <Link to="/variation" className={isActive("/variation")}>
                     Variation
                   </Link>
                 </li>
@@ -184,17 +184,17 @@ const Sidebar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/importProducts" className={isActive("/importProducts")}>
+                  <Link to="/import-products" className={isActive("/import-products")}>
                     Import Products
                   </Link>
                 </li>
                 <li>
-                  <Link to="/importOpeningStock" className={isActive("/importOpeningStock")}>
+                  <Link to="/import-opening-stock" className={isActive("/import-opening-stock")}>
                     Import Opening Stock
                   </Link>
                 </li>
                 <li>
-                  <Link to="/sellingpricegroup" className={isActive("/sellingpricegroup")}>
+                  <Link to="/selling-price-group" className={isActive("/selling-price-group")}>
                     Selling Price Group
                   </Link>
                 </li>
@@ -214,7 +214,7 @@ const Sidebar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/brands" className={isActive("/brands")}>
+                  <Link to="/brand" className={isActive("/brand")}>
                     Brands
                   </Link>
                 </li>

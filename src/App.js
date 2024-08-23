@@ -30,6 +30,11 @@ import ListPurchaseReturn from './pages/purchase/ListPurchaseReturn';
 import AddPurchaseReturn from './pages/purchase/AddPurchaseReturn';
 import UpdatePrice from './pages/products/UpdatePrice';
 import PrintLabel from './pages/products/PrintLabel';
+import Brand from './pages/products/Brand';
+import Variation from './pages/products/Variation';
+import ImportProducts from './pages/products/ImportProduct';
+import ImportOpeningStock from './pages/products/ImportOpeningStock';
+import Sellingpricegroup from './pages/products/SellingPriceGroup';
 
 function App() {
   return (
@@ -70,6 +75,11 @@ function App() {
               {/* product */}
               <Route path="/products" element={<Products />} />
               <Route path="/add-product" element={<AddProduct />} />
+              <Route path="/brand" element={<Brand />} />
+              <Route path="/variation" element={<Variation />} />
+              <Route path="/import-products" element={<ImportProducts />} />
+              <Route path="/import-opening-stock" element={<ImportOpeningStock />} />
+              <Route path="/selling-price-group" element={<Sellingpricegroup />} />
 
 
               {/* purchase */}

@@ -77,7 +77,7 @@ function AddUser() {
                                                     <div className="mb-3">
                                                         <div className="form-check">
                                                             <input className="form-check-input" type="checkbox" value=""
-                                                                id="isActive" checked />
+                                                                id="isActive"/>
                                                             <label className="form-check-label" for="isActive">
                                                                 Is active?
                                                             </label>
@@ -117,7 +117,7 @@ function AddUser() {
                                                         <div className="mb-3">
                                                             <div className="form-check">
                                                                 <input className="form-check-input" type="checkbox" value=""
-                                                                    onClick={handleToggleLoginFields} id="allowLoginCheckbox" />
+                                                                    onClick={handleToggleLoginFields} id="allowLoginCheckbox"/>
                                                                 <label className="form-check-label" for="allowLoginCheckbox">
                                                                     Allow login
                                                                 </label>
@@ -254,7 +254,7 @@ function AddUser() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> 
 
                     <div className="row">
                         <div className="col-md-12">
