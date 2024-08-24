@@ -20,19 +20,22 @@ function Customer() {
               </div>
             </div>
 
-            <p>
-              <button
-                className="btn btn-primary"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseExample"
-                aria-expanded="false"
-                aria-controls="collapseExample"
-              >
-                Filters
-              </button>
-            </p>
+
             <div>
+              <div className="card card-body mb-4">
+                <div className="student-group-form">
+                  <button
+                    className="btn btn-primary"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseExample"
+                    aria-expanded="false"
+                    aria-controls="collapseExample"
+                  >
+                    <i className="fas fa-filter"></i> &nbsp; Filters
+                  </button>
+                </div>
+              </div>
               <div className="collapse" id="collapseExample">
                 <div className="card card-body mb-4">
                   <div className="student-group-form">
@@ -211,7 +214,7 @@ function Customer() {
                         </tr>
                       </thead>
                       <tbody>
-                        
+
                       </tbody>
                     </table>
                   </div>
