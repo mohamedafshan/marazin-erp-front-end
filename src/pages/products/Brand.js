@@ -3,11 +3,14 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Brand = () => {
-  const [show, setShow] = useState(false);
-  const [data, setData] = useState([]);
-  const [brandName, setBrandName] = useState("");
-  const [description, setDescription] = useState("");
+  const [showAddEditModal, setShowAddEditModal] = useState(false); // State to control the add/edit modal visibility
+  const [showDeleteModal, setShowDeleteModal] = useState(false); // State to control the delete modal visibility
+  const [data, setData] = useState([]); // State to hold the fetched brand data
+  const [brandName, setBrandName] = useState(""); // State to hold the brand name input value
+  const [description, setDescription] = useState(""); // State to hold the description input value
+  const [deletingId, setDeletingId] = useState(null); // State to hold the ID of the brand to be deleted
 
+  // Function to load brand data from the API
   const loadData = async () => {
     try {
       const res = await axios.get('http://127.0.0.1:8000/api/brand-get-all');
@@ -18,19 +21,22 @@ const Brand = () => {
   };
 
   useEffect(() => {
-    loadData();
+    loadData(); // Fetch brand data when the component mounts
   }, []);
 
-  const handleShow = () => {
-    setShow(true);
+  // Function to show the add/edit modal
+  const handleShowAddEditModal = () => {
+    setShowAddEditModal(true);
   };
 
-  const handleClose = () => {
+  // Function to close the add/edit modal and reset form fields
+  const handleCloseAddEditModal = () => {
     setBrandName("");
     setDescription("");
-    setShow(false);
+    setShowAddEditModal(false);
   };
 
+  // Function to handle the form submission for adding/editing a brand
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const formData = {
@@ -39,15 +45,43 @@ const Brand = () => {
     };
     
     try {
-      const res = await axios.post("http://127.0.0.1:8000/api/brand-store", formData);
-      console.log(res.data);
+      await axios.post("http://127.0.0.1:8000/api/brand-store", formData);
       loadData(); // Refresh data after adding a new brand
-      handleClose(); // Close the modal and clear the form
+      handleCloseAddEditModal(); // Close the modal and clear the form
     } catch (error) {
       console.error("There was an error adding the brand!", error);
     }
   };
 
+  // Function to show the delete confirmation modal and store the ID of the brand to be deleted
+  const handleShowDeleteModal = (id) => {
+    setDeletingId(id);
+    setShowDeleteModal(true);
+  };
+
+  // Function to delete a brand based on the stored ID
+  const deleteBrand = async () => {
+    try {
+      await axios.delete(`http://127.0.0.1:8000/api/brand-delete/${deletingId}`);
+      alert("Brand deleted successfully.");
+      loadData(); // Refresh the data after deletion
+      setShowDeleteModal(false); // Close the delete modal
+      setDeletingId(null); // Clear the ID after deletion
+    } catch (error) {
+      let errorMessage = "An unexpected error occurred.";
+  
+      if (error.response) {
+        if (error.response.status === 404) {
+          errorMessage = "Error: " + error.response.data.message;
+        }
+      }
+  
+      alert(errorMessage);
+      console.error("Error:", error);
+    }
+  };
+
+  // Function to generate the table rows for displaying brand data
   const fetchtable = () => {
     return data.map((item, index) => (
       <tr key={index}>
@@ -57,12 +91,14 @@ const Brand = () => {
         <td>
           <button
             type="button"
-            className="btn btn-danger"
-            // onClick={(e) => deleteBrand(e, item.id)}
+            className="delete_btn btn btn-outline-danger btn-ms"
+            onClick={() => handleShowDeleteModal(item.id)} // Set the ID when the delete button is clicked
           >
+            <i className="feather-trash-2 text-danger me-1"></i>
             Delete
           </button>
-          <Link to={`/edit-brand/${item.id}`} className="btn btn-primary">
+          <Link to={`/edit-brand/${item.id}`} className="edit_btn btn btn-outline-info btn-ms ms-2">
+            <i className="feather-edit text-info"></i>
             Edit
           </Link>
         </td>
@@ -100,7 +136,7 @@ const Brand = () => {
                         <button
                           type="button"
                           className="btn btn-outline-info"
-                          onClick={handleShow}
+                          onClick={handleShowAddEditModal}
                         >
                           New <i className="fas fa-plus px-2"></i>
                         </button>
@@ -130,8 +166,34 @@ const Brand = () => {
             </div>
           </div>
 
+          {/* Delete modal */}
+          {showDeleteModal && (
+            <div id="deleteModal" className="modal custom-modal fade show" role="dialog" style={{ display: "block" }}>
+              <div className="modal-dialog modal-dialog-centered">
+                <div className="modal-content" style={{border: '2px solid #007bff', borderRadius: '8px' }}>
+                  <div className="modal-body">
+                    <div className="form-header">
+                      <h3>Delete Brand</h3>
+                      <p>Are you sure you want to delete?</p>
+                    </div>
+                    <div className="modal-btn delete-action">
+                      <div className="row">
+                        <div className="col-6">
+                          <button onClick={deleteBrand} className="confirm_delete_btn btn btn-primary paid-continue-btn" style={{ width: "100%" }}>Delete</button>
+                        </div>
+                        <div className="col-6">
+                          <button onClick={() => setShowDeleteModal(false)} className="btn btn-primary paid-cancel-btn">Cancel</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Add/Edit Modal */}
-          {show && (
+          {showAddEditModal && (
             <>
               <div className="modal-backdrop fade show"></div>
               <div
@@ -190,7 +252,7 @@ const Brand = () => {
                           <button
                             type="button"
                             className="btn btn-outline-danger"
-                            onClick={handleClose}
+                            onClick={handleCloseAddEditModal}
                           >
                             Close
                           </button>
