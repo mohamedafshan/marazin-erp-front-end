@@ -1,106 +1,153 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { PlaySound } from '../../components/SoundSetup/PlaySound';
+import { Modal, Button, Form } from 'react-bootstrap';
 
 const Brand = () => {
-  const [showAddEditModal, setShowAddEditModal] = useState(false); // State to control the add/edit modal visibility
-  const [showDeleteModal, setShowDeleteModal] = useState(false); // State to control the delete modal visibility
-  const [data, setData] = useState([]); // State to hold the fetched brand data
-  const [brandName, setBrandName] = useState(""); // State to hold the brand name input value
-  const [description, setDescription] = useState(""); // State to hold the description input value
-  const [deletingId, setDeletingId] = useState(null); // State to hold the ID of the brand to be deleted
+  const [showAddEditModal, setShowAddEditModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [data, setData] = useState([]);
+  const [brandName, setBrandName] = useState("");
+  const [description, setDescription] = useState("");
+  const [deletingId, setDeletingId] = useState(null);
+  const [editMode, setEditMode] = useState(false);
+  const [currentBrandId, setCurrentBrandId] = useState(null);
+  const [errors, setErrors] = useState({
+    brandName: "",
+    description: "",
+  });
 
-  // Function to load brand data from the API
   const loadData = async () => {
     try {
       const res = await axios.get('http://127.0.0.1:8000/api/brand-get-all');
       setData(res.data.message);
     } catch (error) {
       console.error("There was an error fetching the data!", error);
+      toast.error("Failed to fetch data.");
+      PlaySound('error');
     }
   };
 
   useEffect(() => {
-    loadData(); // Fetch brand data when the component mounts
+    loadData();
   }, []);
 
-  // Function to show the add/edit modal
-  const handleShowAddEditModal = () => {
+  const handleShowAddEditModal = (brand = null) => {
+    if (brand) {
+      setBrandName(brand.name);
+      setDescription(brand.description);
+      setCurrentBrandId(brand.id);
+      setEditMode(true);
+    } else {
+      setBrandName("");
+      setDescription("");
+      setCurrentBrandId(null);
+      setEditMode(false);
+    }
     setShowAddEditModal(true);
   };
 
-  // Function to close the add/edit modal and reset form fields
   const handleCloseAddEditModal = () => {
     setBrandName("");
     setDescription("");
+    setErrors({
+      brandName: "",
+      description: "",
+    });
     setShowAddEditModal(false);
+    setEditMode(false);
   };
 
-  // Function to handle the form submission for adding/editing a brand
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+
+    let isValid = true;
+    let newErrors = {
+      brandName: "",
+      description: "",
+    };
+
+    if (!brandName) {
+      newErrors.brandName = "Brand Name is required.";
+      isValid = false;
+      toast.error("Brand Name is required.");
+      PlaySound('warning');
+    }
+
+    // You can add more validation rules here
+
+    if (!isValid) {
+      setErrors(newErrors);
+      return;
+    }
+
     const formData = {
       name: brandName,
       description: description,
     };
-    
+
     try {
-      await axios.post("http://127.0.0.1:8000/api/brand-store", formData);
-      loadData(); // Refresh data after adding a new brand
-      handleCloseAddEditModal(); // Close the modal and clear the form
+      if (editMode) {
+        await axios.post(`http://127.0.0.1:8000/api/brand-update/${currentBrandId}`, formData);
+        toast.success("Brand updated successfully.");
+      } else {
+        await axios.post("http://127.0.0.1:8000/api/brand-store", formData);
+        toast.success("Brand added successfully.");
+      }
+      PlaySound('success');
+      loadData();
+      handleCloseAddEditModal();
     } catch (error) {
-      console.error("There was an error adding the brand!", error);
+      console.error("There was an error saving the brand!", error);
+      toast.error(editMode ? "Failed to update brand." : "Failed to add brand.");
+      PlaySound('error');
     }
   };
 
-  // Function to show the delete confirmation modal and store the ID of the brand to be deleted
   const handleShowDeleteModal = (id) => {
     setDeletingId(id);
     setShowDeleteModal(true);
   };
 
-  // Function to delete a brand based on the stored ID
   const deleteBrand = async () => {
     try {
       await axios.delete(`http://127.0.0.1:8000/api/brand-delete/${deletingId}`);
-      alert("Brand deleted successfully.");
-      loadData(); // Refresh the data after deletion
-      setShowDeleteModal(false); // Close the delete modal
-      setDeletingId(null); // Clear the ID after deletion
+      toast.success("Brand deleted successfully.");
+      PlaySound('success');
+      loadData();
+      setShowDeleteModal(false);
+      setDeletingId(null);
     } catch (error) {
-      let errorMessage = "An unexpected error occurred.";
-  
-      if (error.response) {
-        if (error.response.status === 404) {
-          errorMessage = "Error: " + error.response.data.message;
-        }
-      }
-  
-      alert(errorMessage);
       console.error("Error:", error);
+      toast.error("Failed to delete brand.");
+      PlaySound('error');
     }
   };
 
-  // Function to generate the table rows for displaying brand data
   const fetchtable = () => {
-    return data.map((item, index) => (
-      <tr key={index}>
-        <td>{index + 1}</td>
+    return data.map((item) => (
+      <tr key={item.id}>
+        <td>{item.id}</td>
         <td>{item.name}</td>
         <td>{item.description}</td>
         <td>
           <button
             type="button"
             className="delete_btn btn btn-outline-danger btn-ms"
-            onClick={() => handleShowDeleteModal(item.id)} // Set the ID when the delete button is clicked
+            onClick={() => handleShowDeleteModal(item.id)}
           >
             <i className="feather-trash-2 text-danger me-1"></i>
             Delete
           </button>
-          <Link to={`/edit-brand/${item.id}`} className="edit_btn btn btn-outline-info btn-ms ms-2">
+          <button
+            type="button"
+            className="edit_btn btn btn-outline-info btn-ms ms-2"
+            onClick={() => handleShowAddEditModal(item)}
+          >
             <i className="feather-edit text-info"></i>
             Edit
-          </Link>
+          </button>
         </td>
       </tr>
     ));
@@ -136,7 +183,7 @@ const Brand = () => {
                         <button
                           type="button"
                           className="btn btn-outline-info"
-                          onClick={handleShowAddEditModal}
+                          onClick={() => handleShowAddEditModal()}
                         >
                           New <i className="fas fa-plus px-2"></i>
                         </button>
@@ -168,9 +215,9 @@ const Brand = () => {
 
           {/* Delete modal */}
           {showDeleteModal && (
-            <div id="deleteModal" className="modal custom-modal fade show" role="dialog" style={{ display: "block" }}>
+            <div className="modal custom-modal fade show" role="dialog" style={{ display: "block" }}>
               <div className="modal-dialog modal-dialog-centered">
-                <div className="modal-content" style={{border: '2px solid #007bff', borderRadius: '8px' }}>
+                <div className="modal-content" style={{ border: '2px solid #007bff', borderRadius: '8px' }}>
                   <div className="modal-body">
                     <div className="form-header">
                       <h3>Delete Brand</h3>
@@ -193,77 +240,69 @@ const Brand = () => {
           )}
 
           {/* Add/Edit Modal */}
-          {showAddEditModal && (
-            <>
-              <div className="modal-backdrop fade show"></div>
-              <div
-                id="exampleModal"
-                className="modal fade show d-block"
-                tabIndex="-1"
-                role="dialog"
-                aria-hidden="true"
-                style={{ display: "block" }}
-              >
-                <div className="modal-dialog modal-dialog-centered">
-                  <div className="modal-content">
-                    <div className="modal-body">
-                      <div className="text-center mt-2 mb-4">
-                        <h5>Add Brand</h5>
-                      </div>
-                      <form onSubmit={handleFormSubmit}>
-                        <div className="mb-3">
-                          <div className="form-group local-forms">
-                            <label>
-                              Brand Name <span className="login-danger">*</span>
-                            </label>
-                            <input
-                              className="form-control"
-                              name="name"
-                              type="text"
-                              placeholder="Brand Name"
-                              value={brandName}
-                              onChange={(e) => setBrandName(e.target.value)}
-                            />
-                          </div>
-                        </div>
+          <Modal
+            show={showAddEditModal}
+            onHide={handleCloseAddEditModal}
+            centered
+            backdrop="static"
+          >
+            <Modal.Header closeButton>
+              <Modal.Title>{editMode ? 'Edit Brand' : 'Add Brand'}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Form onSubmit={handleFormSubmit}>
+                <Form.Group className="mb-3" controlId="formBrandName">
+                  <Form.Label>
+                    Brand Name <span className="text-danger">*</span>
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Brand Name"
+                    value={brandName}
+                    onChange={(e) => {
+                      setBrandName(e.target.value);
+                      if (errors.brandName) {
+                        setErrors({ ...errors, brandName: "" });
+                      }
+                    }}
+                    isInvalid={!!errors.brandName}
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    {errors.brandName}
+                  </Form.Control.Feedback>
+                </Form.Group>
 
-                        <div className="mb-3">
-                          <div className="form-group local-forms">
-                            <label>
-                              Description <span className="login-danger"></span>
-                            </label>
-                            <textarea
-                              className="form-control"
-                              name="description"
-                              placeholder="Enter Description"
-                              value={description}
-                              onChange={(e) => setDescription(e.target.value)}
-                            ></textarea>
-                          </div>
-                        </div>
+                <Form.Group className="mb-3" controlId="formDescription">
+                  <Form.Label>Description</Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    rows={3}
+                    placeholder="Enter Description"
+                    value={description}
+                    onChange={(e) => {
+                      setDescription(e.target.value);
+                      if (errors.description) {
+                        setErrors({ ...errors, description: "" });
+                      }
+                    }}
+                    isInvalid={!!errors.description}
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    {errors.description}
+                  </Form.Control.Feedback>
+                </Form.Group>
 
-                        <div className="modal-footer">
-                          <button
-                            type="submit"
-                            className="btn btn-outline-primary"
-                          >
-                            Save
-                          </button>
-                          <button
-                            type="button"
-                            className="btn btn-outline-danger"
-                            onClick={handleCloseAddEditModal}
-                          >
-                            Close
-                          </button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </>
-          )}
+                <Modal.Footer>
+                  <Button variant="primary" type="submit">
+                    {editMode ? 'Update' : 'Save'}
+                  </Button>
+                  <Button variant="danger" onClick={handleCloseAddEditModal}>
+                    Close
+                  </Button>
+                </Modal.Footer>
+              </Form>
+            </Modal.Body>
+          </Modal>
         </div>
       </div>
     </>

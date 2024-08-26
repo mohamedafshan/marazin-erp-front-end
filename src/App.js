@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import SideBar from './components/SideBar';
 import Footer from './components/Footer';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Import pages
 import AdminDashboard from './pages/AdminDashboard';
@@ -13,7 +15,6 @@ import Roles from './pages/usermanagement/Roles';
 import SalesCommission from './pages/usermanagement/SalesCommission';
 import AddProduct from './pages/AddProduct';
 import ListPurchases from './pages/ListPurchases';
-// import AddPurchase from './pages/AddPurchase';
 import AddUser from './pages/usermanagement/AddUser';
 import Warranty from './pages/Warranty';
 import AddWarranty from './components/warranty/AddWarranty';
@@ -49,11 +50,9 @@ function App() {
               <Route path="/admin-dashboard" element={<AdminDashboard />} />
               <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
               <Route path="/student-dashboard" element={<StudentDashboard />} />
-            
-             
+              
               <Route path="/list-purchases" element={<ListPurchases />} />
-            
-             
+              
               <Route path="/list-warranties" element={<Warranty />} />
               <Route path="/add-warranty" element={<AddWarranty />} />
               <Route path="/edit-warranty/:id" element={<EditWarranty />} />
@@ -71,7 +70,6 @@ function App() {
               <Route path="/customer-group" element={<CustomerGroup />} />
               <Route path="/import-contact" element={<ImportContact />} />
               
-
               {/* product */}
               <Route path="/products" element={<Products />} />
               <Route path="/add-product" element={<AddProduct />} />
@@ -81,7 +79,6 @@ function App() {
               <Route path="/import-opening-stock" element={<ImportOpeningStock />} />
               <Route path="/selling-price-group" element={<Sellingpricegroup />} />
 
-
               {/* purchase */}
               <Route path="/purchase" element={<Purchase />} />
               <Route path="/add-purchase" element={<AddPurchase />} />
@@ -89,13 +86,14 @@ function App() {
               <Route path="/add-purchase-return" element={<AddPurchaseReturn />} />
               <Route path="/update-price" element={<UpdatePrice />} />
               <Route path="/print-label" element={<PrintLabel />} />
-
+              
               {/* Add more routes here */}
             </Routes>
           </div>
           <Footer />
         </div>
       </Router>
+      <ToastContainer /> {/* Add ToastContainer here */}
     </React.StrictMode>
   );
 }
